@@ -18,9 +18,15 @@ void exit_handler(){
 }
 
 char* combine_strings(const char* str, char* str2){
-    char *combinedString;
+    char* combinedString;
     int totalSize = strlen(str2) + 1;
-    combinedString = (char *)malloc(totalSize * sizeof(char));
+    combinedString = (char*) malloc(totalSize * sizeof(char));
+
+    if (combinedString == NULL) {
+        fprintf(stderr, "Memory allocation failed.\n");
+        exit(1);
+    }
+
     sprintf(combinedString, str, str2);
     return combinedString;
 }
